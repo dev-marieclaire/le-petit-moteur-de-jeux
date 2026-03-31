@@ -1,9 +1,11 @@
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
 
-#include "headers/init.h"
-#include "headers/init_window.h"
-#include "headers/init_renderer.h"
+#include "defs.h"
+
+#include "init/init_window.h"
+#include "init/init_renderer.h"
+#include "init/init_surface.h"
+#include "init/init_img.h"
 
 // Inits SDL libs and loads 
 void init_all(SDL_Window **w, SDL_Renderer **r, SDL_Surface *s) // Initializes all.
@@ -20,14 +22,7 @@ void init_all(SDL_Window **w, SDL_Renderer **r, SDL_Surface *s) // Initializes a
 
     *r = init_renderer(*w);
 
-    int flags=IMG_INIT_JPG|IMG_INIT_PNG;
-    int initted = IMG_Init(flags);
+    s = init_surface_from_window(*w);
 
-    s = SDL_GetWindowSurface(*w);
-
-    if(initted&flags != flags)
-    {   printf("IMG_Init: Failed to init required jpg and png support!\n");
-        printf("IMG_Init: %s\n", IMG_GetError());
-        // handle error
-    }
+    init_img(DEFAULT_IMG_FLAGS);
 }
