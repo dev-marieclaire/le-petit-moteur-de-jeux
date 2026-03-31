@@ -1,7 +1,5 @@
 #include <SDL2/SDL.h>
 
-#include "headers/init_renderer.h"
-
 // Initializes a renderer with some default values and performs a checking
 SDL_Renderer *init_renderer(SDL_Window *w)
 {
