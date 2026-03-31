@@ -12,7 +12,9 @@
 typedef struct game_t
 {
     SDL_Window      *window;
+    SDL_Surface     *surface;
     SDL_Renderer    *renderer;
+    SDL_Rect   area;
 
     SDL_Event       event;
 }game_t;
