@@ -1,3 +1,5 @@
+// screen.c
+
 #include <SDL2/SDL.h>
 // #include <stdio.h>
 
@@ -7,9 +9,4 @@ void clear_screen(SDL_Renderer *renderer, Uint8 r, Uint8 g, Uint8 b, Uint8 a)
 
     SDL_SetRenderDrawColor(renderer, r, g, b, a);
     SDL_RenderClear(renderer);
-}
-
-void present_scene(SDL_Renderer *renderer)
-{
-    SDL_RenderPresent(renderer);
 }

@@ -1,3 +1,5 @@
+// init.c
+
 #include <SDL2/SDL.h>
 
 #include "defs.h"
@@ -7,7 +9,7 @@
 #include "init/init_surface.h"
 #include "init/init_img.h"
 
-// Inits SDL libs and loads 
+// Inits SDL libs and loads defaults.
 void init_all(SDL_Window **w, SDL_Renderer **r, SDL_Surface *s) // Initializes all.
 {
     // Init libraries.
