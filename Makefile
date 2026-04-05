@@ -12,4 +12,4 @@ compile:
 	gcc $(SRC) $(INCLUDE) -o $(OUT) $(LFLAGS)
 
 exec:
-	./build/main
+	cd ./build && ./main
