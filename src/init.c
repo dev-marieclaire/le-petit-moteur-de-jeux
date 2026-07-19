@@ -6,7 +6,6 @@
 
 #include "init/init_window.h"
 #include "init/init_renderer.h"
-#include "init/init_surface.h"
 #include "init/init_img.h"
 
 // Inits SDL libs and loads defaults.
