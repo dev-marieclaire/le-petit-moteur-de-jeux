@@ -5,8 +5,8 @@
 #include "defs.h"
 
 // Initializes a renderer with some default values and performs a checking
-SDL_Renderer *init_renderer(SDL_Window *w)
-{   SDL_Renderer *r = SDL_CreateRenderer(w, -1, DEFAULT_REND_FLAGS);
+SDL_Renderer *init_renderer(SDL_Window *win)
+{   SDL_Renderer *r = SDL_CreateRenderer(win, -1, DEFAULT_REND_FLAGS);
 
     if (!r)
     {   printf("Failed to create renderer: %s\n", SDL_GetError());
@@ -17,8 +17,8 @@ SDL_Renderer *init_renderer(SDL_Window *w)
 }
 
 // Initializes a renderer with custom values and performs a checking
-SDL_Renderer *init_custom_renderer(SDL_Window *w, int index, uint flags)
-{   SDL_Renderer *r = SDL_CreateRenderer(w, index, flags);
+SDL_Renderer *init_custom_renderer(SDL_Window *win, int index, uint flags)
+{   SDL_Renderer *r = SDL_CreateRenderer(win, index, flags);
 
     if (!r)
     {   printf("Failed to create renderer: %s\n", SDL_GetError());
