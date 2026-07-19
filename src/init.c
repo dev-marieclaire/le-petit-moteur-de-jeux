@@ -10,38 +10,30 @@
 #include "init/init_img.h"
 
 // Inits SDL libs and loads defaults.
-void init_everything(SDL_Window *w, SDL_Renderer *r, SDL_Surface *s) // Initializes all.
-{
-    // Init libraries.
+void init_everything(game_t *game) {
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) < 0)
     {   printf("Couldn't init SDL: %s\n", SDL_GetError());
         exit(1);
     }
 
-    // Initializes the window.
-    w = init_window();
+    game->window = init_window();
 
-    // Sets the renderer hint.
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
-    // SDL_SetHint(SDL_HINT_FRAMEBUFFER_ACCELERATION, "0");
-    // SDL_SetHint(SDL_HINT_RENDER_DRIVER, "opengl");
 
-    if (w != NULL)
-    {   r = init_renderer(w);
-        if (!r)
-        {   printf("Coudln't create SDL Renderer: %s", SDL_GetError());
-            exit(1);
-        }
+    if (game->window != NULL)
+    {
+        game->renderer = init_renderer(game->window);
 
-        s = init_surface_from_window(w);
-
-        if (!s)
-        {   printf("Coudln't create SDL Surface: %s", SDL_GetError());
+        if (!game->renderer)
+        {   printf("Couldn't create SDL Renderer: %s", SDL_GetError());
             exit(1);
         }
     }
     else
-    { printf("Error: Window doesn't exist."); }
+    { printf("Error: Window doesn't exist."); exit(1); }
+
+    SDL_GetWindowSize(game->window, &game->rect.w, &game->rect.h);
+    printf("Window size: %dx%d\n", game->rect.w, game->rect.h);
 
     init_img(DEFAULT_IMG_FLAGS);
 }

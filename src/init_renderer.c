@@ -8,10 +8,11 @@
 SDL_Renderer *init_renderer(SDL_Window *win)
 {   SDL_Renderer *r = SDL_CreateRenderer(win, -1, DEFAULT_REND_FLAGS);
 
-    if (!r)
-    {   printf("Failed to create renderer: %s\n", SDL_GetError());
-        exit(1);
-    }
+    SDL_RendererInfo info;
+    if (SDL_GetRendererInfo(r, &info) == 0)
+        printf("Using renderer: %s\n", info.name);
+    else
+        printf("Failed to get renderer info: %s\n", SDL_GetError());
 
     return r;
 }
