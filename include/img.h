@@ -30,49 +30,32 @@ class imageClass {
         { data = src; }
 };
 
-class pngClass : public imageClass
-{
-    public:
-    pngClass(const char *src)
-    {
-        SDL_RWops *rw = SDL_RWFromFile(src, "rb");
-
-        if (!rw) {
-            printf("Couldn't open %s: %s\n", src, SDL_GetError());
-            exit(1);
-        }
-
-        SDL_Surface *surf = IMG_LoadPNG_RW(rw);
-    
-        if (!surf) {
-            printf("Failed to load %s, is it a valid PNG file?: %s\n", src, IMG_GetError());
-            exit(1);
-        }
-
-        imageClass::setData(surf);
-    }
-};
-
 class bmpClass : public imageClass
 {
     public:
-    bmpClass(const char *src)
-    {
-        SDL_RWops *rw = SDL_RWFromFile(src, "rb");
-
-        if (!rw) {
-            printf("Couldn't open %s: %s\n", src, SDL_GetError());
-            exit(1);
-        }
-
-        SDL_Surface *surf = IMG_Load_RW(rw, 1);
-    
-        if (!surf) {
-            printf("Failed to load %s, is it a valid BMP file?: %s\n", src, IMG_GetError());
-            exit(1);
-        }
-
-        imageClass::setData(surf);
-    }
+        bmpClass(const char *src);
 };
 
+class pngClass : public imageClass
+{
+    public:
+        pngClass(const char *src);
+};
+
+class jpegClass : public imageClass
+{
+    public:
+        jpegClass(const char *src);
+};
+
+class tgaClass : public imageClass
+{
+    public:
+        tgaClass(const char *src);
+};
+
+class tifClass : public imageClass
+{
+    public:
+        tifClass(const char *src);
+};

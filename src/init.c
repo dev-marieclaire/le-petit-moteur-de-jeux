@@ -23,6 +23,8 @@ void init_everything(SDL_Window *w, SDL_Renderer *r, SDL_Surface *s) // Initiali
 
     // Sets the renderer hint.
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
+    // SDL_SetHint(SDL_HINT_FRAMEBUFFER_ACCELERATION, "0");
+    // SDL_SetHint(SDL_HINT_RENDER_DRIVER, "opengl");
 
     if (w != NULL)
     {   r = init_renderer(w);
