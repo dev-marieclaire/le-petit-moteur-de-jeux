@@ -46,7 +46,7 @@ int main()
     game.rect.w = DEFAULT_SCREEN_WIDTH; game.rect.h = DEFAULT_SCREEN_HEIGHT;
     game.rect.x = game.rect.y = 0;
 
-    bmpClass bmp("./dither.bmp");
+    img_t bmp("./madame.bmp");
     bmp.createTextureFromSurface(game.renderer);
 
     // pngClass png("./dither.bmp");
@@ -56,7 +56,7 @@ int main()
 
     while(true) // All game logic goes here.
     {   // #fcd7d7
-        // SDL_RenderClear(game.renderer);
+        SDL_RenderClear(game.renderer);
 
         input(&game.event);
 
@@ -65,7 +65,7 @@ int main()
         SDL_RenderPresent(game.renderer);
     }
 
-    bmp.~imageClass();
+    bmp.~img_t();
 
     finish();
 
