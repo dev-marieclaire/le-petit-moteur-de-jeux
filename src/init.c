@@ -24,11 +24,21 @@ void init_everything(SDL_Window *w, SDL_Renderer *r, SDL_Surface *s) // Initiali
     // Sets the renderer hint.
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
     // SDL_SetHint(SDL_HINT_FRAMEBUFFER_ACCELERATION, "0");
-    // SDL_SetHint(SDL_HINT_RENDER_DRIVER, "opengl");
+    SDL_SetHint(SDL_HINT_RENDER_DRIVER, "opengl");
 
     if (w != NULL)
     {   r = init_renderer(w);
+        if (!r)
+        {   printf("Coudln't create SDL Renderer: %s", SDL_GetError());
+            exit(1);
+        }
+
         s = init_surface_from_window(w);
+
+        if (!s)
+        {   printf("Coudln't create SDL Surface: %s", SDL_GetError());
+            exit(1);
+        }
     }
     else
     { printf("Error: Window doesn't exist."); }
