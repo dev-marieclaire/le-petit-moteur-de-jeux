@@ -5,14 +5,14 @@
 #include <stdio.h>
 #include <time.h>
 
-#include "../include/defs.h"
+#include "defs.h"
 
-#include "../include/init.h"
+#include "init.h"
 
-#include "../include/screen.h"
-#include "../include/input.h"
+#include "screen.h"
+#include "input.h"
 
-#include "../include/img.h"
+#include "img.h"
 
 // Struct that defines the highest-level information about the application/game
 typedef struct game_t
@@ -46,16 +46,6 @@ int main()
     game.rect.w = DEFAULT_SCREEN_WIDTH; game.rect.h = DEFAULT_SCREEN_HEIGHT;
     game.rect.x = game.rect.y = 0;
 
-    // printf("Window: %zu\n", sizeof(game.window));
-    // printf("Renderer: %zu\n", sizeof(game.renderer));
-    // printf("Surface: %zu\n\n", sizeof(game.surface));
-    // printf("Rect: %zu\n", sizeof(game.rect));
-    // printf("Event: %zu\n\n", sizeof(game.event));
-
-    // printf("Event: %zu\n", sizeof(game));
-    
-    // SDL_Surface *bmp = bmp_load("./dither.bmp");
-    // pngClass png("./dither.bmp");
     bmpClass bmp("./dither.bmp");
     bmp.createTextureFromSurface(game.renderer);
 
