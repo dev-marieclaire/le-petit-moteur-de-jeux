@@ -34,6 +34,9 @@ class img_t {
         void setPosition(int x, int y)
         { area.x = x; area.y = y; }
 
+        void setDimensions(int w, int h)
+        { area.w = w; area.h = h; }
+
         // Autres choses
         void createTextureFromSurface(SDL_Renderer *renderer)
         { texture = SDL_CreateTextureFromSurface(renderer, data); }
