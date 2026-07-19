@@ -14,22 +14,6 @@
 
 #include "img.h"
 
-// Struct that defines the highest-level information about the application/game
-typedef struct game_t
-{
-    SDL_Window      *window; // 8 Bytes
-    SDL_Renderer    *renderer; // 8 Bytes
-    SDL_Surface     *surface; // 8 Bytes
-
-    SDL_Rect        rect; // 16 Bytes
-    SDL_Event       event; // 56 Bytes
-
-    // bool    shown; // 1 Bytes
-    // bool    mouse_focus;
-    // bool    keyboard_focus;
-    // bool    minimized;
-}game_t;
-
 game_t game;
 
 void finish()
@@ -41,31 +25,27 @@ void finish()
 
 int main()
 {
-    init_everything(game.window, game.renderer, game.surface);
-
-    game.rect.w = DEFAULT_SCREEN_WIDTH; game.rect.h = DEFAULT_SCREEN_HEIGHT;
-    game.rect.x = game.rect.y = 0;
+    init_everything(&game);
 
     img_t bmp("./madame.bmp");
     bmp.createTextureFromSurface(game.renderer);
 
-    // pngClass png("./dither.bmp");
-    // png.createTextureFromSurface(game.renderer);
-
-    // SDL_SetRenderDrawColor(game.renderer, 0xfc, 0xd7, 0xd7, 0xff);
+    bmp.setPosition(
+        ((game.rect.w)/2)-((bmp.getArea().w)/2),
+        ((game.rect.h)/2)-((bmp.getArea().h)/2)
+    );
 
     while(true) // All game logic goes here.
     {   // #fcd7d7
+        SDL_SetRenderDrawColor(game.renderer, 0xfc, 0xd7, 0xd7, 0xff);
         SDL_RenderClear(game.renderer);
 
         input(&game.event);
 
-        // SDL_RenderCopy(game.renderer, bmp.getTexture(), NULL, &game.rect);
-        // SDL_RenderCopy(game.renderer, png.getTexture(), NULL, &game.rect);
+        SDL_RenderCopy(game.renderer, bmp.getTexture(), NULL, bmp.getAreaPtr());
+        
         SDL_RenderPresent(game.renderer);
     }
-
-    bmp.~img_t();
 
     finish();
 

@@ -5,7 +5,8 @@
 #include "img.h"
 
 bool img_t::load(const char *src)
-{   data = IMG_Load(src); // Turns out this method automatically detects the format.
+{
+    data = IMG_Load(src); // Turns out this method automatically detects the format.
             
     if (!data)
     {   printf("Failed to load %s: %s\n", src, IMG_GetError());
@@ -15,10 +16,15 @@ bool img_t::load(const char *src)
     area.w = data->w;
     area.h = data->h;
 
+    area.x = 0; area.y = 0;
+
+    printf("Image dimensions: %dx%d", area.w, area.h);
+
     return true;
 }
 
 void img_t::clean()
-{   if (data) SDL_FreeSurface(data);
+{
+    if (data) SDL_FreeSurface(data);
     if (texture) SDL_DestroyTexture(texture);
 }

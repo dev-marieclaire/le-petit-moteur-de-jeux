@@ -18,6 +18,9 @@ class img_t {
         SDL_Rect getArea()
         { return area; }
 
+        SDL_Rect *getAreaPtr()
+        { return &area; }
+
         SDL_Surface *getData()
         { return data; }
 
@@ -27,6 +30,9 @@ class img_t {
         // Setter zone
         void setData(SDL_Surface *src)
         { data = src; }
+
+        void setPosition(int x, int y)
+        { area.x = x; area.y = y; }
 
         // Autres choses
         void createTextureFromSurface(SDL_Renderer *renderer)
