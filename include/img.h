@@ -32,7 +32,7 @@ class img_t {
         void createTextureFromSurface(SDL_Renderer *renderer)
         { texture = SDL_CreateTextureFromSurface(renderer, data); }
 
-        void reimport(const char *src)
+        void reload(const char *src)
         { clean(); load(src); }
 
         img_t(const char *src)
