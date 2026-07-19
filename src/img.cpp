@@ -4,7 +4,7 @@
 
 #include "img.h"
 
-bmpClass::bmpClass(const char *src)
+int bmpClass::assignImage(const char *src)
 {   SDL_RWops *rw = SDL_RWFromFile(src, "rb");
 
     if (!rw)
@@ -20,9 +20,11 @@ bmpClass::bmpClass(const char *src)
     }
 
     imageClass::setData(surf);
+
+    return 1;
 }
 
-pngClass::pngClass(const char *src)
+int pngClass::assignImage(const char *src)
 {   SDL_RWops *rw = SDL_RWFromFile(src, "rb");
 
     if (!rw)
@@ -38,9 +40,11 @@ pngClass::pngClass(const char *src)
     }
 
     imageClass::setData(surf);
+
+    return 1;
 }
 
-jpegClass::jpegClass(const char *src)
+int jpegClass::assignImage(const char *src)
 {   SDL_RWops *rw = SDL_RWFromFile(src, "rb");
 
     if (!rw)
@@ -56,9 +60,11 @@ jpegClass::jpegClass(const char *src)
     }
 
     imageClass::setData(surf);
+
+    return 1;
 }
 
-tgaClass::tgaClass(const char *src)
+int tgaClass::assignImage(const char *src)
 {   SDL_RWops *rw = SDL_RWFromFile(src, "rb");
 
     if (!rw)
@@ -74,9 +80,11 @@ tgaClass::tgaClass(const char *src)
     }
 
     imageClass::setData(surf);
+
+    return 1;
 }
 
-tifClass::tifClass(const char *src)
+int tifClass::assignImage(const char *src)
 {   SDL_RWops *rw = SDL_RWFromFile(src, "rb");
 
     if (!rw)
@@ -92,4 +100,6 @@ tifClass::tifClass(const char *src)
     }
 
     imageClass::setData(surf);
+
+    return 1;
 }

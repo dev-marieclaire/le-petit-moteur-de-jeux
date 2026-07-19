@@ -65,6 +65,8 @@ int main()
         SDL_RenderPresent(game.renderer);
     }
 
+    bmp.~imageClass();
+
     finish();
 
     return 0;
