@@ -52,9 +52,11 @@ int main()
     // pngClass png("./dither.bmp");
     // png.createTextureFromSurface(game.renderer);
 
+    // SDL_SetRenderDrawColor(game.renderer, 0xfc, 0xd7, 0xd7, 0xff);
+
     while(true) // All game logic goes here.
     {   // #fcd7d7
-        clear_screen(game.renderer, 0xfc, 0xd7, 0xd7, 0xff);
+        // SDL_RenderClear(game.renderer);
 
         input(&game.event);
 
