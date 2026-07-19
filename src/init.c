@@ -10,7 +10,7 @@
 #include "init/init_img.h"
 
 // Inits SDL libs and loads defaults.
-void init_all(SDL_Window **w, SDL_Renderer **r, SDL_Surface *s) // Initializes all.
+void init_everything(SDL_Window *w, SDL_Renderer *r, SDL_Surface *s) // Initializes all.
 {
     // Init libraries.
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) < 0)
@@ -18,13 +18,18 @@ void init_all(SDL_Window **w, SDL_Renderer **r, SDL_Surface *s) // Initializes a
         exit(1);
     }
 
-    *w = init_window();
+    // Initializes the window.
+    w = init_window();
 
+    // Sets the renderer hint.
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
 
-    *r = init_renderer(*w);
-
-    s = init_surface_from_window(*w);
+    if (w != NULL)
+    {   r = init_renderer(w);
+        s = init_surface_from_window(w);
+    }
+    else
+    { printf("Error: Window doesn't exist."); }
 
     init_img(DEFAULT_IMG_FLAGS);
 }
